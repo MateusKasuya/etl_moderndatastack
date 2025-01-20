@@ -5,7 +5,7 @@ description = ""
 authors = [
     {name = "Mateus Kasuya",email = "mateusvbkasuya@gmail.com"}
 ]
-packages = [{ include = "src"}]
+packages = [{ include = "src", from = "src"}]
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
 dependencies = [
