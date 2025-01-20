@@ -1,1 +1,3 @@
-assert 1 == 1
+def teste_ci():
+    x = 1
+    assert x == 1
