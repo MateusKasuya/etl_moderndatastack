@@ -27,7 +27,7 @@ def generate_customer_data(num_customers: int):
         for i in range(1, num_customers + 1)
     ]
 
-    data_dict = {'customers' : customers_data}
+    data_dict = {'customers': customers_data}
 
     # Salvando em JSONL
     with open('data/customers_data.json', 'w') as f:
@@ -49,7 +49,7 @@ def generate_products_data(num_products: int):
         for i in range(1, num_products + 1)
     ]
 
-    data_dict = {'products' : products_data}
+    data_dict = {'products': products_data}
 
     with open('data/products_data.json', 'w') as f:
         json.dump(data_dict, f, indent=4)
@@ -57,7 +57,9 @@ def generate_products_data(num_products: int):
     return products_data
 
 
-def generate_orders_data(num_orders: int, customers_data: dict, products_data: dict):
+def generate_orders_data(
+    num_orders: int, customers_data: dict, products_data: dict
+):
 
     # Gerando Orders
     orders_data = [
@@ -77,10 +79,10 @@ def generate_orders_data(num_orders: int, customers_data: dict, products_data: d
         for i in range(1, num_orders + 1)
     ]
 
-    data_dict = {'orders' : orders_data}
+    data_dict = {'orders': orders_data}
 
     with open('data/orders_data.json', 'w') as f:
-        json.dump(data_dict, f, indent= 4)
+        json.dump(data_dict, f, indent=4)
 
     return orders_data
 
@@ -88,4 +90,8 @@ def generate_orders_data(num_orders: int, customers_data: dict, products_data: d
 if __name__ == '__main__':
     customers_data = generate_customer_data(num_customers=100)
     products_data = generate_products_data(num_products=1000)
-    generate_orders_data(num_orders=10000, customers_data = customers_data, products_data= products_data)
+    generate_orders_data(
+        num_orders=10000,
+        customers_data=customers_data,
+        products_data=products_data,
+    )

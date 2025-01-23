@@ -1,16 +1,23 @@
-import sys
 import os
+import sys
 
 # Adicione o diretório raiz ao PYTHONPATH
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+)
 
-from src.schema import Customers_Schemas
 import json
 
-with open("data/customers_data.json", "r") as file:
-    data = json.load(file)
+from src.schema import Customers_Schemas
 
-customer = Customers_Schemas(**data)
 
-if customer is not None:
-    print("Schema Validation OK")
+def test_customers_schema():
+    with open('data/customers_data.json', 'r') as file:
+        data = json.load(file)
+
+    customer = Customers_Schemas(**data)
+
+    if customer is not None:
+        message = print('Schema Validation OK')
+
+    return message

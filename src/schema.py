@@ -1,6 +1,8 @@
-from pydantic import BaseModel, PositiveInt, EmailStr
 from datetime import date
 from typing import List
+
+from pydantic import BaseModel, EmailStr, PositiveInt
+
 
 class Customer_Schema(BaseModel):
     customer_id: PositiveInt
@@ -12,6 +14,7 @@ class Customer_Schema(BaseModel):
     state: str
     country: str
     join_date: date
-    
-class Customers_Schemas(BaseModel): 
-    customers : List[Customer_Schema]
+
+
+class Customers_Schemas(BaseModel):
+    customers: List[Customer_Schema]
