@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 
-from src.raiz.local_settings import postgresql as settings
+from src.raiz.settings import postgresql as settings
 
 
 def get_engine(user, password, host, port, db):
