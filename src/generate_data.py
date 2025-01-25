@@ -7,7 +7,7 @@ from faker import Faker
 fake = Faker('en-US')
 
 
-def generate_customer_data(num_customers: int):
+def generate_customer_data(num_customers: int) -> list:
 
     # Gerando Customers
     customers_data = [
@@ -36,7 +36,7 @@ def generate_customer_data(num_customers: int):
     return customers_data
 
 
-def generate_products_data(num_products: int):
+def generate_products_data(num_products: int) -> list:
 
     # Gerando Products
     products_data = [
@@ -59,7 +59,7 @@ def generate_products_data(num_products: int):
 
 def generate_orders_data(
     num_orders: int, customers_data: dict, products_data: dict
-):
+) -> list:
 
     # Gerando Orders
     orders_data = [
