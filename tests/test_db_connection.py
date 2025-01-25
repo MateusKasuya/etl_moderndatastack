@@ -1,8 +1,16 @@
+import os
+import sys
+
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import database_exists
 
 from src.raiz.db_connection import get_engine_from_settings
 from src.raiz.local_settings import postgresql as settings
+
+# Adicione o diretório raiz ao PYTHONPATH
+sys.path.insert(
+    0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+)
 
 
 def test_database_exists():
