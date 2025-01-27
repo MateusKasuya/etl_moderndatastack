@@ -1,8 +1,9 @@
+from dotenv import dotenv_values
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 
-from src.raiz.settings import postgresql as settings
+settings = dotenv_values('.env')
 
 
 def get_engine(user, password, host, port, db):
@@ -19,18 +20,17 @@ def get_engine(user, password, host, port, db):
 
 
 def get_engine_from_settings():
+    keys = ['PGUSER', 'PGPASSWORD', 'PGHOST', 'PGPORT', 'PGDB']
 
-    keys = ['pguser', 'pgpasswd', 'pghost', 'pgport', 'pgdb']
-
-    if not all(key in keys for key in settings.keys()):
+    if not all(key in settings for key in keys):
         raise Exception('Bad Config file')
 
     return get_engine(
-        user=settings['pguser'],
-        password=settings['pgpasswd'],
-        host=settings['pghost'],
-        port=settings['pgport'],
-        db=settings['pgdb'],
+        user=settings['PGUSER'],
+        password=settings['PGPASSWORD'],
+        host=settings['PGHOST'],
+        port=settings['PGPORT'],
+        db=settings['PGDB'],
     )
 
 
@@ -40,3 +40,7 @@ def get_session():
     session = sessionmaker(bind=engine)()
     print(session)
     return session
+
+
+if __name__ == '__main__':
+    get_session()
