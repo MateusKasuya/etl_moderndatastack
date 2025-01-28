@@ -1,6 +1,6 @@
 from dotenv import dotenv_values
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy_utils import create_database, database_exists
 
 settings = dotenv_values('.env')
@@ -14,7 +14,7 @@ def get_engine(user, password, host, port, db):
 
     engine = create_engine(url, pool_size=50, echo=True)
 
-    print(engine.url)
+    #print(engine.url)
 
     return engine
 
@@ -34,13 +34,7 @@ def get_engine_from_settings():
     )
 
 
-def get_session():
 
-    engine = get_engine_from_settings()
-    session = sessionmaker(bind=engine)()
-    print(session)
-    return session
-
-
-if __name__ == '__main__':
-    get_session()
+engine = get_engine_from_settings()
+Session = sessionmaker(bind=engine)
+Base = declarative_base()
