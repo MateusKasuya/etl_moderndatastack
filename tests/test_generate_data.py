@@ -8,7 +8,7 @@ sys.path.insert(
 
 import json
 
-from src.schema import Customers_Schemas
+from src.schema import Customers_Schemas, Orders_Schemas, Products_Schemas
 
 
 def test_customers_schema():
@@ -18,6 +18,30 @@ def test_customers_schema():
     customer = Customers_Schemas(**data)
 
     if customer is not None:
+        message = print('Schema Validation OK')
+
+    return message
+
+
+def test_products_schema():
+    with open('data/products_data.json', 'r') as file:
+        data = json.load(file)
+
+    product = Products_Schemas(**data)
+
+    if product is not None:
+        message = print('Schema Validation OK')
+
+    return message
+
+
+def test_orders_schema():
+    with open('data/orders_data.json', 'r') as file:
+        data = json.load(file)
+
+    order = Orders_Schemas(**data)
+
+    if order is not None:
         message = print('Schema Validation OK')
 
     return message
